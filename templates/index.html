@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>MindReads | Book Recommeding Therapist</title>
+
+  <!--===== Meta Tags =====-->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!--====== Favicons ========-->
+  <link rel="apple-touch-icon" sizes="180x180"
+    href="https://firebasestorage.googleapis.com/v0/b/mindreads-4551b.appspot.com/o/favicons%2Fapple-touch-icon.png?alt=media&token=64e52a10-34c2-4fbe-a447-08668cf8815f">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="https://firebasestorage.googleapis.com/v0/b/mindreads-4551b.appspot.com/o/favicons%2Ffavicon-32x32.png?alt=media&token=bbbd2b5e-a785-4874-b5fc-71f34abd6af3">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://firebasestorage.googleapis.com/v0/b/mindreads-4551b.appspot.com/o/favicons%2Ffavicon-16x16.png?alt=media&token=c6180666-f183-452d-aa76-0d0026504304">
+
+  <!--===== Open Graph Metas =====-->
+  <meta property="og:url" content="https://www.mindreads.app" />
+  <meta property="og:type" content="webpage" />
+  <meta property="og:title" content="Book Recommeding Therapist" />
+  <meta property="og:description"
+    content="Introducing MindReads - Your personal book recommending therapist, brought to you by the Google Developer Student Club at GNDU, participating in Google's Solution Challenge! " />
+  <meta property="og:image"
+    content="https://firebasestorage.googleapis.com/v0/b/mindreads-4551b.appspot.com/o/favicons%2Fandroid-chrome-512x512.png?alt=media&token=02c9454a-803f-434f-8d8c-ac701728404d" />
+
+  <!--===== Google Fonts ======-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!--===== Custom CSS styles =====-->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .custom_width {
+      width: 600px;
+    }
+
+    @media (max-width: 1027px) {
+      .custom_width {
+        width: 450px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .custom_width {
+        width: 350px;
+      }
+    }
+
+    @media (max-width: 630px) {
+      .custom_width {
+        width: 400px;
+      }
+
+      form {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .custom_width {
+        width: 340px;
+      }
+    }
+
+    section.books section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 60px;
+    }
+  </style>
+
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+
+<body>
+  <nav style="z-index: 100000;"
+    class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="https://www.mindreads.app/" class="flex items-center">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/mindreads-4551b.appspot.com/o/favicons%2Fapple-touch-icon.png?alt=media&token=64e52a10-34c2-4fbe-a447-08668cf8815f"
+          class="h-8 mr-3" alt="MindReads Logo">
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">MindReads</span>
+      </a>
+      <div class="flex md:order-2">
+        <button onclick="location.href='#recommend'" type="button"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Suggest</button>
+        <button data-collapse-toggle="navbar-sticky" type="button"
+          class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="navbar-sticky" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul
+          class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <li>
+            <a href="#home"
+              class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500">Home</a>
+          </li>
+          <li>
+            <a href="#about"
+              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+          </li>
+          <li>
+            <a href="#recommend"
+              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Books</a>
+          </li>
+          <li>
+            <a href="#helpline"
+              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Helpline</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="home">
+    <div class="w-full relative pb-10 px-6 xl:px-0">
+      <img class="absolute w-full inset-0 dark:hidden h-full object-cover object-center"
+        src="https://cdn.tuk.dev/assets/templates/weCare/hero2-bg.png" alt="we care family" />
+      <div class="pt-32 lg:flex items-center relative z-10 container mx-auto">
+        <div class="w-full lg:w-1/2 h-full lg:pr-10 xl:pr-0">
+          <img tabindex="0" role="img" aria-label="mindreads" class="mx-auto w-100 rounded-lg mb-6"
+            src="https://firebasestorage.googleapis.com/v0/b/mindreads-4551b.appspot.com/o/Mindreads%20hero.png?alt=media&token=d24346da-f319-4133-852e-6d10e0061814"
+            alt="mindreads" />
+        </div>
+        <div role="contentinfo" class="w-full lg:w-[500px] h-full">
+          <p tabindex="0" class="text-indigo-500 uppercase text-2xl mb-4">Introducing</p>
+          <h1 tabindex="0" class="text-[rgba(0,0,0,0.85)] text-4xl lg:text-6xl font-black mb-4">MindReads</h1>
+          <h3 tabindex="0" class="text-black-300 font-medium mb-8">"Unlocking the secrets of the mind, one thought
+            at a time."</h3>
+          <p tabindex="0" class="font-regular mb-8">Your personal book recommending therapist, brought to you by the
+            Google Developer Student Club at GNDU, participating in Google's Solution Challenge!
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 30px;" id="about" class="about">
+    <div class="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4">
+      <p
+        class="font-normal text-sm leading-3 text-indigo-700 dark:text-indigo-500 hover:text-indigo-800 cursor-pointer pb-2">
+        About</p>
+      <div class="flex lg:flex-row flex-col lg:gap-8 sm:gap-10 gap-12">
+        <div class="w-full lg:w-6/12">
+          <h2 class="w-full font-bold lg:text-4xl text-3xl lg:leading-10 dark:text-[black] leading-9">MindReads assists
+            in achieving SDG 3: Good Health and
+            Well-Being</h2>
+          <p class="font-normal text-base leading-6 mt-6">Reading has been shown to have a number of
+            positive effects on mental health, including reducing stress, improving cognitive function, and increasing
+            empathy. Through book recommendations that address psychological needs and assist readers in taking control
+            of their mental health, MindReads has the potential to support the promotion of good mental wellness and
+            health.</p>
+        </div>
+        <div class="w-full lg:w-6/12">
+          <img class="lg:block hidden w-full rounded-lg"
+            src="https://firebasestorage.googleapis.com/v0/b/mindreads-4551b.appspot.com/o/Mindreads%20About.png?alt=media&token=12cf2f43-7a32-462a-b858-c78603ede1a3"
+            alt="people discussing on board" />
+          <img class="lg:hidden sm:block hidden w-full"
+            src="https://firebasestorage.googleapis.com/v0/b/mindreads-4551b.appspot.com/o/Mindreads%20About%20(1).png?alt=media&token=91fae2a2-53dd-40df-83a9-704bd8726024"
+            alt="people discussing on board" />
+          <img class="sm:hidden block w-full"
+            src="https://firebasestorage.googleapis.com/v0/b/mindreads-4551b.appspot.com/o/Mindreads%20About%20(2).png?alt=media&token=1bd94d09-e715-472c-b4ef-4d9d4c76af5c"
+            alt="people discussing on board" />
+        </div>
+      </div>
+
+      <div class="relative mt-24">
+        <div class="grid sm:grid-cols-3 grid-cols-2 sm:gap-8 gap-4">
+          <div class="z-20 w-12 h-12 bg-gray-800 rounded-full flex justify-center items-center">
+            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg1.svg" alt="flag" />
+          </div>
+
+          <img class="z-20" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg2.svg" alt="note" />
+
+          <img class="z-20 sm:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg3.svg"
+            alt="users" />
+        </div>
+        <hr class="z-10 absolute top-2/4 w-full bg-gray-200" />
+      </div>
+      <div class="grid sm:grid-cols-3 grid-cols-2 sm:gap-8 gap-4">
+        <div>
+          <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6">Impact</p>
+          <p class="font-normal text-base leading-6 mt-6">MindReads aims to contribute towards improved mental health
+            outcomes for individuals worldwide.</p>
+        </div>
+        <div class="sm:block hidden">
+          <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6">Working</p>
+          <p class="font-normal text-base leading-6 mt-6">Book recommendations based on the user's current emotional
+            state, utilizing TensorFlow.
+          </p>
+        </div>
+        <div>
+          <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6">Future Scope
+          </p>
+          <p class="font-normal text-base leading-6 mt-6">Online community rooms for users to interact with others who
+            share similar experiences.</p>
+        </div>
+      </div>
+      <div class="sm:hidden block relative mt-8">
+        <div class="grid sm:grid-cols-3 grid-cols-2 sm:gap-8 gap-4">
+          <img style="z-index: 20;" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg3.svg"
+            alt="user" />
+        </div>
+        <hr class="z-10 absolute top-2/4 w-full bg-gray-200" />
+      </div>
+      <div class="sm:hidden grid sm:grid-cols-3 grid-cols-2 sm:gap-8 gap-4">
+        <div>
+          <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6">Future Scope</p>
+          <p class="font-normal text-base leading-6 mt-6">Online community rooms for users to interact with others who
+            share similar experiences.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <main style="padding-top: 120px;" id="recommend" class="recommend">
+    <div class="dark:bg-gray-900">
+      <section class="mx-auto container w-full py-36">
+        <div class="flex flex-col justify-center items-center">
+          <div class="md:text-5xl text-4xl font-black text-center dark:text-white leading-snug lg:w-3/4">
+            <h2>How are you feeling today?</h2>
+          </div>
+          <p align="center" class="my-8 text-2xl text-white opacity-80 px-10">Try expressing your true feelings. Share
+            your emotions
+            and our
+            system will help you become better!!</p>
+          <div class="flex justify-center items-center mt-16">
+            <form class="flex justify-center" style="align-items: center;gap: 30px;" id="reqForm" method="POST">
+              <input
+                class="custom_width p-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                type="text" placeholder="Express Yourself" name="request" id="req" />
+              <input style="cursor: pointer;" type="submit"
+                class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-800 hover:opacity-90 w-48 h-12 text-lg text-white bg-gradient-to-l from-indigo-600 to-indigo-700 rounded"
+                value="Submit" id="btn-submit" />
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section style="display: none;" class="books px-10" id="books-main">
+    <div class="md:text-5xl text-4xl font-black text-center leading-snug lg:w-3/4 py-10 mx-auto">
+      <h1 class="">Our Top Recommendations</h1>
+    </div>
+    <section id="books" class="py-4">
+
+      <!--====== A Component Reference ======-->
+      <!-- <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <a>
+          <img class="rounded-t-lg"
+            src="https://firebasestorage.googleapis.com/v0/b/mindreads-4551b.appspot.com/o/Atomic%20Habits.png?alt=media&token=8adad884-ff84-4fc4-8dc9-c7aaf82f3888"
+            alt="" />
+        </a>
+        <div class="p-5">
+          <a>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology
+              acquisitions 2021</h5>
+          </a>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
+            acquisitions of 2021 so far, in reverse chronological order.</p>
+          <h5 class="text-white">Author: <span>Stephen King</span></h5>
+        </div>
+      </div> -->
+
+    </section>
+  </section>
+
+  <section style="padding-top: 30px;" id="helpline" class="helpline">
+    <div class="xl:px-20 px-8 py-20 2xl:mx-auto 2xl:container relative z-40">
+      <h1 class="text-5xl font-bold xl:block hidden leading-tight text-gray-800">
+        Talk to Someone About Your Mental Health:<br />
+        Call our Helpline
+      </h1>
+      <h1 class="text-5xl font-bold xl:hidden block leading-tight lg:leading-10 text-gray-800">Talk to Someone About
+        Your Mental Health</h1>
+
+      <div class="slider">
+        <div class="slide-ana">
+          <div class="flex relative" style="transform: translateX(0%)">
+            <div class="mt-14 md:flex">
+              <div class="relative lg:w-1/2 sm:w-96 xl:h-96 h-80">
+                <img src="https://i.ibb.co/4g1D9cv/imgslider1.png" alt="image of profile"
+                  class="w-full h-full flex-shrink-0 object-fit object-cover shadow-lg rounded" />
+                <div
+                  class="w-32 md:flex hidden items-center justify-center absolute top-0 -mr-16 -mt-14 right-0 h-32 bg-indigo-100 rounded-full">
+                  <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/testimonial-svg1.svg" alt="commas" />
+                </div>
+              </div>
+              <div class="md:w-1/3 lg:w-1/3 xl:ml-32 md:ml-20 md:mt-0 mt-4 flex flex-col justify-between">
+                <div>
+                  <h1 class="text-2xl font-semibold xl:leading-loose">Feel free to talk to someone whom you can share
+                    your stress.</h1>
+                  <p class="text-base font-medium leading-6 mt-4 text-gray-500">
+                    <ul style="list-style-type: circle;padding-left: 20px;">
+                      <li style="margin-bottom: 10px;">National Alliance on Mental Illness NAMI HelpLine: 1-800-950-6264
+                        or text NAMI to 741-741</li>
+                      <li style="margin-bottom: 10px;"> Crisis Support Services national helpline: 800-273-8255</li>
+                      <li style="margin-bottom: 10px;">SAMHSA’s National Helpline (substance abuse and mental health):
+                        800-662-HELP (800-662-4357)</li>
+                      <li style="margin-bottom: 10px;">Teen Line for youth in need of support: 800-852-8336</li>
+                    </ul>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-white shadow dark:bg-gray-900">
+    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <a href="https://www.mindreads.app/" class="flex items-center mb-4 sm:mb-0">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/mindreads-4551b.appspot.com/o/favicons%2Fapple-touch-icon.png?alt=media&token=64e52a10-34c2-4fbe-a447-08668cf8815f"
+            class="h-8 mr-3" alt="MindReads Logo" />
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">MindReads</span>
+        </a>
+        <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+          <li>
+            <a href="#about" class="mr-4 hover:underline md:mr-6 ">About</a>
+          </li>
+          <li>
+            <a href="https://github.com/cyberbuddy-manas/mindreads-solution-challenge"
+              class="mr-4 hover:underline md:mr-6">GitHub</a>
+          </li>
+          <li>
+            <a href="https://gdsc.community.dev/guru-nanak-dev-university-amritsar/"
+              class="mr-4 hover:underline md:mr-6 ">GDSC Page</a>
+          </li>
+          <li>
+            <a href="#helpline" class="hover:underline">Helpline</a>
+          </li>
+        </ul>
+      </div>
+      <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+      <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a
+          href="https://www.mindreads.app/" class="hover:underline">MindReads</a>. An Open Source Solution.</span>
+    </div>
+  </footer>
+
+
+
+  <!--====== Latest version of jQuery from Google CDN =======-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!--====== The core Firebase JS SDK ======-->
+  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyAgr60dDz0d_IWhq-BR8rhBrTCI09ZVkEE",
+      authDomain: "mindreads-4551b.firebaseapp.com",
+      databaseURL: "https://mindreads-4551b-default-rtdb.firebaseio.com",
+      projectId: "mindreads-4551b",
+      storageBucket: "mindreads-4551b.appspot.com",
+      messagingSenderId: "383577880721",
+      appId: "1:383577880721:web:bdaa2bee81a8b4a6872730",
+      measurementId: "G-CR6H2JNPWR"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"> </script>
+</body>
+
+</html>
